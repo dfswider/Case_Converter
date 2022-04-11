@@ -11,25 +11,56 @@
             <textarea id="txt" cols="100" rows="10"></textarea>
         </label>
         <br>
-        <button id="upper-case" onclick="upperCase()">Upper Case</button>
-        <button id="lower-case" onclick="lowerCase()">Lower Case</button>
-        <button id="proper-case">Proper Case</button>
-        <button id="sentence-case">Sentence Case</button>
+        <button type="button" id="upper-case" onclick="upperCase()">Upper Case</button>
+        <button type="button" id="lower-case" onclick="lowerCase()">Lower Case</button>
+        <button type="button" id="proper-case" onclick="properCase()">Proper Case</button>
+        <button type="button" id="sentence-case" onclick="sentenceCase()">Sentence Case</button>
     </form>
 </body>
 <script>
-
     function upperCase(){
         //let txt = document.getElementById("txt");
         console.log( document.getElementById("txt").value );
         document.getElementById("txt").value = document.getElementById("txt").value.toUpperCase();
         console.log( document.getElementById("txt").value );
     }
+
     function lowerCase(){
         //let txt = document.getElementById("txt");
         console.log( document.getElementById("txt").value );
         document.getElementById("txt").value = document.getElementById("txt").value.toLowerCase();
         console.log( document.getElementById("txt").value );
+    }
+
+    function properCase(){
+        console.log( document.getElementById("txt").value );
+        let s = document.getElementById("txt").value.toLowerCase();
+
+        s = s.split(' ');
+        for ( let i=0; i<s.length; i++ ){
+            s[i] = s[i].charAt(0).toUpperCase() + s[i].slice(1).toLowerCase();
+        }
+        s = s.join(' ');
+
+        document.getElementById("txt").value = s;
+        console.log( document.getElementById("txt").value );
+    }
+
+    function sentenceCase(){
+        let s = document.getElementById("txt").value.toLowerCase();
+
+        s = s.split('.');
+        for ( let i=0; i<s.length; i++ ){
+            let j = 0;
+            for  ( j=0; s[i].charAt(j) == ' '; j++);
+            let ss = '';
+            for ( let k=0; k<j; k++ )
+                ss = ss + ' ';
+            s[i] = ss + s[i].charAt(j).toUpperCase() + s[i].slice( j+1 ).toLowerCase();
+        }
+        s = s.join('.');
+
+        document.getElementById("txt").value = s;
     }
 </script>
 </html>
