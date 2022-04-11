@@ -15,6 +15,7 @@
         <button type="button" id="lower-case" onclick="lowerCase()">Lower Case</button>
         <button type="button" id="proper-case" onclick="properCase()">Proper Case</button>
         <button type="button" id="sentence-case" onclick="sentenceCase()">Sentence Case</button>
+        <button type="button" id="save-text-file" onclick="save()">Save Text File</button>
     </form>
 </body>
 <script>
@@ -52,7 +53,8 @@
         s = s.split('.');
         for ( let i=0; i<s.length; i++ ){
             let j = 0;
-            for  ( j=0; s[i].charAt(j) == ' '; j++);
+            for  ( j=0; s[i].charAt(j) === ' '; j++){}
+
             let ss = '';
             for ( let k=0; k<j; k++ )
                 ss = ss + ' ';
@@ -61,6 +63,20 @@
         s = s.join('.');
 
         document.getElementById("txt").value = s;
+    }
+    function save(){
+        let s = document.getElementById("txt").value;
+        download( "text.txt", s );
+    }
+
+    function download(filename, text) {
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
     }
 </script>
 </html>
