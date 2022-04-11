@@ -8,13 +8,28 @@
     <h1 class="title">Case Converter</h1>
     <form>
         <label>
-            <textarea cols="100" rows="10"></textarea>
+            <textarea id="txt" cols="100" rows="10"></textarea>
         </label>
         <br>
-        <button id="upper-case">Upper Case</button>
-        <button id="lower-case">Lower Case</button>
+        <button id="upper-case" onclick="upperCase()">Upper Case</button>
+        <button id="lower-case" onclick="lowerCase()">Lower Case</button>
         <button id="proper-case">Proper Case</button>
         <button id="sentence-case">Sentence Case</button>
     </form>
 </body>
+<script>
+
+    function upperCase(){
+        //let txt = document.getElementById("txt");
+        console.log( document.getElementById("txt").value );
+        document.getElementById("txt").value = document.getElementById("txt").value.toUpperCase();
+        console.log( document.getElementById("txt").value );
+    }
+    function lowerCase(){
+        //let txt = document.getElementById("txt");
+        console.log( document.getElementById("txt").value );
+        document.getElementById("txt").value = document.getElementById("txt").value.toLowerCase();
+        console.log( document.getElementById("txt").value );
+    }
+</script>
 </html>
